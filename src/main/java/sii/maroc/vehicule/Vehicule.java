@@ -1,7 +1,5 @@
 package sii.maroc.vehicule;
 
-import sii.maroc.presentation.VehiculeWriter;
-
 public class Vehicule {
 
     private final VehiclesTypes vehiculeType;
@@ -21,11 +19,11 @@ public class Vehicule {
 	this.closedDoors = closedDoors;
     }
 
-    public String move(String distanceInKM) {
+    public float move(String distanceInKM) {
 	distanceInKM = distanceInKM.replaceAll(" KM$", "");
 	final int distance = Integer.parseInt(distanceInKM);
 	final float gasConsumed = calculateConsumption(distance);
-	return new VehiculeWriter().print(vehiculeType, gasConsumed);
+	return gasConsumed;
     }
 
     private float calculateConsumption(int distance) {
@@ -39,16 +37,28 @@ public class Vehicule {
 	return false;
     }
 
-    public String OpenDoors() {
+    public String retrieveOpenDoors() {
 	final String doors = closedDoors.replaceAll(" ", "");
-	if (doors.matches("1?2?3?4?"))
-	    return new VehiculeWriter().writeOpenDoors(vehiculeType, closedDoors);
+	if (doors.matches("1?2?3?4?")) {
+	    final String openDoors = fetchOpenDoors();
+	    return openDoors;
+	}
 	throw new IllegalArgumentException();
+    }
+
+    private String fetchOpenDoors() {
+	final String possibleDoors = VehiclesTypes.CAR.getDoors().replaceAll(" ", "");
+	String openDoors = "";
+	for (int i = 0; i < possibleDoors.length(); i++) {
+	    final String door = possibleDoors.charAt(i) + "";
+	    if (!closedDoors.contains(door))
+		openDoors += door;
+	}
+	return openDoors;
     }
 
     public Vehicule closeDoors(String closedDoors) {
 	return new Vehicule(vehiculeType, gasType, closedDoors);
-
     }
 
 }

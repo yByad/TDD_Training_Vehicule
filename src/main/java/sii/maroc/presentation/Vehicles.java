@@ -15,10 +15,13 @@ public class Vehicles {
 	final GasTypes typeOfGas = GasTypes.valueOf(gasType);
 	Vehicule vehicule = new Vehicule(typeOfVehicule, typeOfGas);
 	vehicule = vehicule.closeDoors(closedDoors);
-	if (vehicule.doorsOK())
-	    return vehicule.move(distanceInKM);
-
-	return vehicule.OpenDoors();
+	final VehiculeWriter view = new VehiculeWriter();
+	if (vehicule.doorsOK()) {
+	    final float gasConsumed = vehicule.move(distanceInKM);
+	    return view.printWhenOK(typeOfVehicule, gasConsumed);
+	}
+	final String openDoors = vehicule.retrieveOpenDoors();
+	return view.printWhenKO(typeOfVehicule, openDoors);
     }
 
 }

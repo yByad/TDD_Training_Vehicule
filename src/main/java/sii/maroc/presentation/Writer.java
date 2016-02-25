@@ -4,8 +4,8 @@ import sii.maroc.vehicule.VehiclesTypes;
 
 public interface Writer {
 
-    String writeOpenDoors(VehiclesTypes vehiculeType, String closedDoors);
+    String printWhenKO(VehiclesTypes vehiculeType, String closedDoors);
 
-    String print(VehiclesTypes vehiculeType, float gasConsumed);
+    String printWhenOK(VehiclesTypes vehiculeType, float gasConsumed);
 
 }

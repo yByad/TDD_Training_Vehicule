@@ -5,73 +5,73 @@ import sii.maroc.vehicule.VehiclesTypes;
 public class VehiculeWriter implements Writer {
 
     @Override
-    public String writeOpenDoors(VehiclesTypes vehiculeType, String closedDoors) {
+    public String printWhenKO(VehiclesTypes vehiculeType, String openDoors) {
 	switch (vehiculeType) {
 	case CAR:
-	    return writeOpenCarDoors(closedDoors);
+	    return writeOpenCarDoors(openDoors);
 	case TRUCK:
-	    return writeOpenTruckDoors(closedDoors);
+	    return writeOpenTruckDoors(openDoors);
 	case MOTORCYCLE:
-	    return writeOpenMotorDoors(closedDoors);
+	    return writeOpenMotorDoors(openDoors);
 	default:
 	    throw new IllegalArgumentException();
 	}
     }
 
-    private String writeOpenMotorDoors(String closedDoors) {
-	if (!closedDoors.equals(VehiclesTypes.MOTORCYCLE.getDoors()))
+    private String writeOpenMotorDoors(String openDoors) {
+	if (!openDoors.equals(VehiclesTypes.MOTORCYCLE.getDoors()))
 	    throw new IllegalArgumentException();
-	return closedDoors;
+	return openDoors;
     }
 
-    private String writeOpenTruckDoors(String closedDoors) {
+    private String writeOpenTruckDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
-	result += writeFrontLeftDoorStatus(closedDoors);
-	result += writeTruckRightDoorStatus(closedDoors);
+	result += writeFrontLeftDoorStatus(openDoors);
+	result += writeTruckRightDoorStatus(openDoors);
 	return result;
     }
 
-    private String writeTruckRightDoorStatus(String closedDoors) {
-	if (closedDoors.contains("2"))
-	    return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
-	return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
+    private String writeTruckRightDoorStatus(String openDoors) {
+	if (openDoors.contains("2"))
+	    return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
-    private String writeOpenCarDoors(String closedDoors) {
+    private String writeOpenCarDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
-	result += writeFrontLeftDoorStatus(closedDoors);
-	result += writeFrontRightDoorStatus(closedDoors);
-	result += writeBackLeftDoorStatus(closedDoors);
-	result += writeBackRightDoorStatus(closedDoors);
+	result += writeFrontLeftDoorStatus(openDoors);
+	result += writeFrontRightDoorStatus(openDoors);
+	result += writeBackLeftDoorStatus(openDoors);
+	result += writeBackRightDoorStatus(openDoors);
 	return result;
     }
 
-    private String writeBackRightDoorStatus(String closedDoors) {
-	if (closedDoors.contains("4"))
-	    return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
-	return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
+    private String writeBackRightDoorStatus(String openDoors) {
+	if (openDoors.contains("4"))
+	    return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
-    private String writeBackLeftDoorStatus(String closedDoors) {
-	if (closedDoors.contains("3"))
-	    return DoorPresentqtions.BACK_LEFT_CLOSED.getDoorRepresentation();
-	return DoorPresentqtions.BACK_LEFT_OPEN.getDoorRepresentation();
+    private String writeBackLeftDoorStatus(String openDoors) {
+	if (openDoors.contains("3"))
+	    return DoorPresentqtions.BACK_LEFT_OPEN.getDoorRepresentation();
+	return DoorPresentqtions.BACK_LEFT_CLOSED.getDoorRepresentation();
     }
 
-    private String writeFrontRightDoorStatus(String closedDoors) {
-	if (closedDoors.contains("2"))
-	    return DoorPresentqtions.FRONT_RIGHT_CLOSED.getDoorRepresentation();
-	return DoorPresentqtions.FRONT_RIGHT_OPEN.getDoorRepresentation();
+    private String writeFrontRightDoorStatus(String openDoors) {
+	if (openDoors.contains("2"))
+	    return DoorPresentqtions.FRONT_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentqtions.FRONT_RIGHT_CLOSED.getDoorRepresentation();
     }
 
-    private String writeFrontLeftDoorStatus(String closedDoors) {
-	if (closedDoors.contains("1"))
-	    return DoorPresentqtions.FRONT_LEFT_CLOSED.getDoorRepresentation();
-	return DoorPresentqtions.FRONT_LEFT_OPEN.getDoorRepresentation();
+    private String writeFrontLeftDoorStatus(String openDoors) {
+	if (openDoors.contains("1"))
+	    return DoorPresentqtions.FRONT_LEFT_OPEN.getDoorRepresentation();
+	return DoorPresentqtions.FRONT_LEFT_CLOSED.getDoorRepresentation();
     }
 
     @Override
-    public String print(VehiclesTypes vehiculeType, float gasConsumed) {
+    public String printWhenOK(VehiclesTypes vehiculeType, float gasConsumed) {
 	String consumedGas = String.format("%.2f", gasConsumed);
 	consumedGas = consumedGas.replace(",", ".");
 	final String result = "DOORS OK, MOVING. The " + vehiculeType.name() + " will consume " + consumedGas + " L";
