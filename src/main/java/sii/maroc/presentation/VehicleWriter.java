@@ -1,6 +1,6 @@
 package sii.maroc.presentation;
 
-public class VehiculeWriter implements Writer {
+public class VehicleWriter implements Writer {
 
     @Override
     public String printWhenOK(String vehiculeType, float gasConsumed) {
@@ -31,8 +31,8 @@ public class VehiculeWriter implements Writer {
 
     private String writeTruckRightDoorStatus(String openDoors) {
 	if (openDoors.contains("2"))
-	    return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
-	return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
+	    return DoorPresentations.BACK_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentations.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
     private String writeOpenCarDoors(String openDoors) {
@@ -56,26 +56,26 @@ public class VehiculeWriter implements Writer {
 
     private String writeBackRightDoorStatus(String openDoors) {
 	if (openDoors.contains("4"))
-	    return DoorPresentqtions.BACK_RIGHT_OPEN.getDoorRepresentation();
-	return DoorPresentqtions.BACK_RIGHT_CLOSED.getDoorRepresentation();
+	    return DoorPresentations.BACK_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentations.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
     private String writeBackLeftDoorStatus(String openDoors) {
 	if (openDoors.contains("3"))
-	    return DoorPresentqtions.BACK_LEFT_OPEN.getDoorRepresentation();
-	return DoorPresentqtions.BACK_LEFT_CLOSED.getDoorRepresentation();
+	    return DoorPresentations.BACK_LEFT_OPEN.getDoorRepresentation();
+	return DoorPresentations.BACK_LEFT_CLOSED.getDoorRepresentation();
     }
 
     private String writeFrontRightDoorStatus(String openDoors) {
 	if (openDoors.contains("2"))
-	    return DoorPresentqtions.FRONT_RIGHT_OPEN.getDoorRepresentation();
-	return DoorPresentqtions.FRONT_RIGHT_CLOSED.getDoorRepresentation();
+	    return DoorPresentations.FRONT_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentations.FRONT_RIGHT_CLOSED.getDoorRepresentation();
     }
 
     private String writeFrontLeftDoorStatus(String openDoors) {
 	if (openDoors.contains("1"))
-	    return DoorPresentqtions.FRONT_LEFT_OPEN.getDoorRepresentation();
-	return DoorPresentqtions.FRONT_LEFT_CLOSED.getDoorRepresentation();
+	    return DoorPresentations.FRONT_LEFT_OPEN.getDoorRepresentation();
+	return DoorPresentations.FRONT_LEFT_CLOSED.getDoorRepresentation();
     }
 
 }

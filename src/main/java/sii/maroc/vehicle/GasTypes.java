@@ -1,4 +1,4 @@
-package sii.maroc.vehicule;
+package sii.maroc.vehicle;
 
 enum GasTypes {
     Diesel(5), Fuel(6), Hybrid(3);

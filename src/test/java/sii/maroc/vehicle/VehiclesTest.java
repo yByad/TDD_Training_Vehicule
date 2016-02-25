@@ -1,8 +1,10 @@
-package sii.maroc.vehicule;
+package sii.maroc.vehicle;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import sii.maroc.vehicle.Vehicles;
 
 /************
  * _ door 1 | | door 2 door 3 |_| door 4
