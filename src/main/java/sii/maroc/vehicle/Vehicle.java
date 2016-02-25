@@ -21,10 +21,8 @@ class Vehicle {
 	this.closedDoors = closedDoors;
     }
 
-    float move(String distanceInKM) {
-	distanceInKM = distanceInKM.replaceAll(" KM$", "");
-	final int distance = Integer.parseInt(distanceInKM);
-	final float gasConsumed = calculateConsumption(distance);
+    float move(int distanceInKM) {
+	final float gasConsumed = calculateConsumption(distanceInKM);
 	return gasConsumed;
     }
 

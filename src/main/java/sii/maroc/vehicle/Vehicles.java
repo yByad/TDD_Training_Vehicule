@@ -1,7 +1,7 @@
 package sii.maroc.vehicle;
 
-import sii.maroc.presentation.VehiclesTypes;
 import sii.maroc.presentation.VehicleWriter;
+import sii.maroc.presentation.VehiclesTypes;
 import sii.maroc.presentation.Writer;
 
 public class Vehicles {
@@ -34,7 +34,9 @@ public class Vehicles {
 	return writer.printWhenKO(vehiculeType, openDoors);
     }
 
-    private String printWhenDoorsClosed(String vehiculeType, String distanceInKM) {
+    private String printWhenDoorsClosed(String vehiculeType, String distance) {
+	distance = distance.replaceAll(" KM$", "");
+	final int distanceInKM = Integer.parseInt(distance);
 	final float gasConsumed = vehicle.move(distanceInKM);
 	return writer.printWhenOK(vehiculeType, gasConsumed);
     }
