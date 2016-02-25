@@ -1,7 +1,5 @@
 package sii.maroc.presentation;
 
-import sii.maroc.vehicule.VehiclesTypes;
-
 public class VehiculeWriter implements Writer {
 
     @Override
@@ -11,17 +9,9 @@ public class VehiculeWriter implements Writer {
 	    return writeOpenCarDoors(openDoors);
 	case TRUCK:
 	    return writeOpenTruckDoors(openDoors);
-	case MOTORCYCLE:
-	    return writeOpenMotorDoors(openDoors);
 	default:
 	    throw new IllegalArgumentException();
 	}
-    }
-
-    private String writeOpenMotorDoors(String openDoors) {
-	if (!openDoors.equals(VehiclesTypes.MOTORCYCLE.getDoors()))
-	    throw new IllegalArgumentException();
-	return openDoors;
     }
 
     private String writeOpenTruckDoors(String openDoors) {

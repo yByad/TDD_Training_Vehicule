@@ -1,12 +1,14 @@
 package sii.maroc.vehicule;
 
-public class Vehicule {
+import sii.maroc.presentation.VehiclesTypes;
+
+class Vehicule {
 
     private final VehiclesTypes vehiculeType;
     private final GasTypes gasType;
     private final String closedDoors;
 
-    public Vehicule(VehiclesTypes vehiculeType, GasTypes gasType) {
+    Vehicule(VehiclesTypes vehiculeType, GasTypes gasType) {
 	this.closedDoors = "";
 	this.vehiculeType = vehiculeType;
 	this.gasType = gasType;
@@ -19,7 +21,7 @@ public class Vehicule {
 	this.closedDoors = closedDoors;
     }
 
-    public float move(String distanceInKM) {
+    float move(String distanceInKM) {
 	distanceInKM = distanceInKM.replaceAll(" KM$", "");
 	final int distance = Integer.parseInt(distanceInKM);
 	final float gasConsumed = calculateConsumption(distance);
@@ -31,23 +33,14 @@ public class Vehicule {
 	return consumedGas;
     }
 
-    public boolean doorsOK() {
+    boolean doorsAreClosed() {
 	if (closedDoors.equals(vehiculeType.getDoors()))
 	    return true;
 	return false;
     }
 
-    public String retrieveOpenDoors() {
-	final String doors = closedDoors.replaceAll(" ", "");
-	if (doors.matches("1?2?3?4?")) {
-	    final String openDoors = fetchOpenDoors();
-	    return openDoors;
-	}
-	throw new IllegalArgumentException();
-    }
-
-    private String fetchOpenDoors() {
-	final String possibleDoors = VehiclesTypes.CAR.getDoors().replaceAll(" ", "");
+    String retrieveOpenDoors() {
+	final String possibleDoors = vehiculeType.getDoors().replaceAll(" ", "");
 	String openDoors = "";
 	for (int i = 0; i < possibleDoors.length(); i++) {
 	    final String door = possibleDoors.charAt(i) + "";
@@ -57,8 +50,11 @@ public class Vehicule {
 	return openDoors;
     }
 
-    public Vehicule closeDoors(String closedDoors) {
-	return new Vehicule(vehiculeType, gasType, closedDoors);
+    Vehicule closeDoors(String closedDoors) {
+	final String doors = closedDoors.replaceAll(" ", "");
+	if (doors.matches(vehiculeType.getTypeRegEx()))
+	    return new Vehicule(vehiculeType, gasType, closedDoors);
+	throw new IllegalArgumentException();
     }
 
 }

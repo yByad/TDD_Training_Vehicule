@@ -1,4 +1,4 @@
-package sii.maroc.vehicule;
+package sii.maroc.presentation;
 
 public enum VehiclesTypes {
 
@@ -12,6 +12,14 @@ public enum VehiclesTypes {
 
     public String getDoors() {
 	return doors;
+    }
+
+    public String getTypeRegEx() {
+	String reg = doors.replaceAll("\\s", "?");
+	if (reg.isEmpty())
+	    return reg;
+	reg += "?";
+	return reg;
     }
 
 }

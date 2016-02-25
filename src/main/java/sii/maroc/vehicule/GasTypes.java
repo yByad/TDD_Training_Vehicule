@@ -1,6 +1,6 @@
 package sii.maroc.vehicule;
 
-public enum GasTypes {
+enum GasTypes {
     Diesel(5), Fuel(6), Hybrid(3);
 
     private int consumptionPercentage;
@@ -17,7 +17,7 @@ public enum GasTypes {
 	this.consumptionPercentage = consumptionPurcentage;
     }
 
-    public static void defineConsumptions(final String consumptions) {
+    static void defineConsumptions(final String consumptions) {
 	String[] pourcentagesPerType = consumptions.split(",");
 	for (String pourcentage : pourcentagesPerType) {
 	    final String[] consumption = pourcentage.split(":");
