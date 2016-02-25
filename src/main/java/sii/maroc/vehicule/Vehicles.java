@@ -6,7 +6,8 @@ import sii.maroc.presentation.Writer;
 
 public class Vehicles {
 
-    final Writer writer;
+    final private Writer writer;
+    private Vehicule vehicule;
 
     public Vehicles(String consumptions) {
 	GasTypes.defineConsumptions(consumptions);
@@ -14,16 +15,28 @@ public class Vehicles {
     }
 
     public String move(String vehiculeType, String gasType, String closedDoors, String distanceInKM) {
-	final VehiclesTypes typeOfVehicule = VehiclesTypes.valueOf(vehiculeType);
-	final GasTypes typeOfGas = GasTypes.valueOf(gasType);
-	Vehicule vehicule = new Vehicule(typeOfVehicule, typeOfGas);
+	vehicule = createVehicule(vehiculeType, gasType);
 	vehicule = vehicule.closeDoors(closedDoors);
 	if (vehicule.doorsAreClosed()) {
-	    final float gasConsumed = vehicule.move(distanceInKM);
-	    return writer.printWhenOK(typeOfVehicule, gasConsumed);
+	    return printWhenDoorsClosed(vehiculeType, distanceInKM);
 	}
+	return printWhenDoorsOpen(vehiculeType);
+    }
+
+    private Vehicule createVehicule(String vehiculeType, String gasType) {
+	final VehiclesTypes typeOfVehicule = VehiclesTypes.valueOf(vehiculeType);
+	final GasTypes typeOfGas = GasTypes.valueOf(gasType);
+	return new Vehicule(typeOfVehicule, typeOfGas);
+    }
+
+    private String printWhenDoorsOpen(String vehiculeType) {
 	final String openDoors = vehicule.retrieveOpenDoors();
-	return writer.printWhenKO(typeOfVehicule, openDoors);
+	return writer.printWhenKO(vehiculeType, openDoors);
+    }
+
+    private String printWhenDoorsClosed(String vehiculeType, String distanceInKM) {
+	final float gasConsumed = vehicule.move(distanceInKM);
+	return writer.printWhenOK(vehiculeType, gasConsumed);
     }
 
 }

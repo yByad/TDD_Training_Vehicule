@@ -3,11 +3,11 @@ package sii.maroc.presentation;
 public class VehiculeWriter implements Writer {
 
     @Override
-    public String printWhenKO(VehiclesTypes vehiculeType, String openDoors) {
+    public String printWhenKO(String vehiculeType, String openDoors) {
 	switch (vehiculeType) {
-	case CAR:
+	case "CAR":
 	    return writeOpenCarDoors(openDoors);
-	case TRUCK:
+	case "TRUCK":
 	    return writeOpenTruckDoors(openDoors);
 	default:
 	    throw new IllegalArgumentException();
@@ -61,10 +61,10 @@ public class VehiculeWriter implements Writer {
     }
 
     @Override
-    public String printWhenOK(VehiclesTypes vehiculeType, float gasConsumed) {
+    public String printWhenOK(String vehiculeType, float gasConsumed) {
 	String consumedGas = String.format("%.2f", gasConsumed);
 	consumedGas = consumedGas.replace(",", ".");
-	final String result = "DOORS OK, MOVING. The " + vehiculeType.name() + " will consume " + consumedGas + " L";
+	final String result = "DOORS OK, MOVING. The " + vehiculeType + " will consume " + consumedGas + " L";
 	return result;
     }
 

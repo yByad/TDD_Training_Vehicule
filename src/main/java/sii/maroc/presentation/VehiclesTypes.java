@@ -2,7 +2,7 @@ package sii.maroc.presentation;
 
 public enum VehiclesTypes {
 
-    CAR("1 2 3 4"), TRUCK("1 2"), MOTORCYCLE("");
+    CAR("1 2 3 4 "), TRUCK("1 2 "), MOTORCYCLE("");
 
     private final String doors;
 
@@ -11,14 +11,11 @@ public enum VehiclesTypes {
     }
 
     public String getDoors() {
-	return doors;
+	return doors.trim();
     }
 
     public String getTypeRegEx() {
 	String reg = doors.replaceAll("\\s", "?");
-	if (reg.isEmpty())
-	    return reg;
-	reg += "?";
 	return reg;
     }
 
