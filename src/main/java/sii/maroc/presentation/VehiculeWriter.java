@@ -3,6 +3,14 @@ package sii.maroc.presentation;
 public class VehiculeWriter implements Writer {
 
     @Override
+    public String printWhenOK(String vehiculeType, float gasConsumed) {
+	String consumedGas = String.format("%.2f", gasConsumed);
+	consumedGas = consumedGas.replace(",", ".");
+	final String result = "DOORS OK, MOVING. The " + vehiculeType + " will consume " + consumedGas + " L";
+	return result;
+    }
+
+    @Override
     public String printWhenKO(String vehiculeType, String openDoors) {
 	switch (vehiculeType) {
 	case "CAR":
@@ -29,10 +37,20 @@ public class VehiculeWriter implements Writer {
 
     private String writeOpenCarDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
-	result += writeFrontLeftDoorStatus(openDoors);
-	result += writeFrontRightDoorStatus(openDoors);
-	result += writeBackLeftDoorStatus(openDoors);
+	result += printFrontDoorsStatus(openDoors);
+	result += printBackDoorsStatus(openDoors);
+	return result;
+    }
+
+    private String printBackDoorsStatus(String openDoors) {
+	String result = writeBackLeftDoorStatus(openDoors);
 	result += writeBackRightDoorStatus(openDoors);
+	return result;
+    }
+
+    private String printFrontDoorsStatus(String openDoors) {
+	String result = writeFrontLeftDoorStatus(openDoors);
+	result += writeFrontRightDoorStatus(openDoors);
 	return result;
     }
 
@@ -58,14 +76,6 @@ public class VehiculeWriter implements Writer {
 	if (openDoors.contains("1"))
 	    return DoorPresentqtions.FRONT_LEFT_OPEN.getDoorRepresentation();
 	return DoorPresentqtions.FRONT_LEFT_CLOSED.getDoorRepresentation();
-    }
-
-    @Override
-    public String printWhenOK(String vehiculeType, float gasConsumed) {
-	String consumedGas = String.format("%.2f", gasConsumed);
-	consumedGas = consumedGas.replace(",", ".");
-	final String result = "DOORS OK, MOVING. The " + vehiculeType + " will consume " + consumedGas + " L";
-	return result;
     }
 
 }
