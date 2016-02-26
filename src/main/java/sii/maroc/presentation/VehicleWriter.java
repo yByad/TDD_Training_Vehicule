@@ -42,17 +42,17 @@ public class VehicleWriter implements Writer {
 	return result;
     }
 
-    private String writeTruckRightDoorStatus(String openDoors) {
-	if (openDoors.contains("2"))
-	    return DoorPresentations.BACK_RIGHT_OPEN.getDoorRepresentation();
-	return DoorPresentations.BACK_RIGHT_CLOSED.getDoorRepresentation();
-    }
-
     private String writeOpenCARDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
 	result += printFrontDoorsStatus(openDoors);
 	result += printBackDoorsStatus(openDoors);
 	return result;
+    }
+
+    private String writeTruckRightDoorStatus(String openDoors) {
+	if (openDoors.contains("2"))
+	    return DoorPresentations.BACK_RIGHT_OPEN.getDoorRepresentation();
+	return DoorPresentations.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
     private String printBackDoorsStatus(String openDoors) {

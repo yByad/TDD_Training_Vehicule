@@ -57,5 +57,4 @@ class Vehicle {
 	    return new Vehicle(vehiculeType, gasType, closedDoors);
 	throw new IllegalArgumentException();
     }
-
 }
