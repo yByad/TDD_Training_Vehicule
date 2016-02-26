@@ -26,7 +26,7 @@ public class VehiclesTest {
     @Test
     public void testTwoDoorsCarOpenDoor() {
 	String report = vehicles.move("TwoDoorsCar", "Diesel", "1 ", "200 KM");
-	Assert.assertEquals("DOORS KO, BLOCKED \n" + " _\n" + "  l_l\n" + " |_\\\n" + " l_l", report);
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " l_l\n" + " |_\\\n" + " l_l", report);
     }
 
     @Test

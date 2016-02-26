@@ -11,12 +11,11 @@ enum VehiclesTypes {
     }
 
     String getDoors() {
-	return doors.trim();
+	return new ParametersProvider().removeSpaces(doors);
     }
 
     String getTypeRegEx() {
-	String reg = doors.replaceAll("\\s", "?");
+	String reg = new ParametersProvider().changeCharacters(doors, " ", "?");
 	return reg;
     }
-
 }
