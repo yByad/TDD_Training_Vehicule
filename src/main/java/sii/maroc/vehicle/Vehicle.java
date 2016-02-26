@@ -1,7 +1,5 @@
 package sii.maroc.vehicle;
 
-import sii.maroc.presentation.VehiclesTypes;
-
 class Vehicle {
 
     private final VehiclesTypes vehiculeType;

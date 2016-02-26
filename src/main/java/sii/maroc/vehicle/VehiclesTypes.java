@@ -1,6 +1,6 @@
-package sii.maroc.presentation;
+package sii.maroc.vehicle;
 
-public enum VehiclesTypes {
+enum VehiclesTypes {
 
     CAR("1 2 3 4 "), TRUCK("1 2 "), MOTORCYCLE(""), TwoDoorsCar("1 2 ");
 
@@ -10,11 +10,11 @@ public enum VehiclesTypes {
 	this.doors = doors;
     }
 
-    public String getDoors() {
+    String getDoors() {
 	return doors.trim();
     }
 
-    public String getTypeRegEx() {
+    String getTypeRegEx() {
 	String reg = doors.replaceAll("\\s", "?");
 	return reg;
     }

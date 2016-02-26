@@ -1,7 +1,6 @@
 package sii.maroc.vehicle;
 
 import sii.maroc.presentation.VehicleWriter;
-import sii.maroc.presentation.VehiclesTypes;
 import sii.maroc.presentation.Writer;
 
 public class Vehicles {
