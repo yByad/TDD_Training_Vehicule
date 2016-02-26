@@ -1,5 +1,7 @@
 package sii.maroc.presentation;
 
+import java.lang.reflect.Method;
+
 public class VehicleWriter implements Writer {
 
     @Override
@@ -12,17 +14,28 @@ public class VehicleWriter implements Writer {
 
     @Override
     public String printWhenKO(String vehiculeType, String openDoors) {
-	switch (vehiculeType) {
-	case "CAR":
-	    return writeOpenCarDoors(openDoors);
-	case "TRUCK":
-	    return writeOpenTruckDoors(openDoors);
-	default:
-	    throw new IllegalArgumentException();
+	String result = "";
+	try {
+	    final String methodToCall = "writeOpen" + vehiculeType + "Doors";
+	    final Class<?> c = Class.forName(this.getClass().getName());
+	    final Method method = c.getDeclaredMethod(methodToCall, String.class);
+	    result = method.invoke(this, openDoors).toString();
+	} catch (Exception e) {
+	    e.printStackTrace();
 	}
+	return result;
+
     }
 
-    private String writeOpenTruckDoors(String openDoors) {
+    private String writeOpenTwoDoorsCarDoors(String openDoors) {
+	String result = "DOORS KO, BLOCKED \n" + " _\n" + "  l_l\n";
+	result += writeFrontLeftDoorStatus(openDoors);
+	result += writeTruckRightDoorStatus(openDoors);
+	result += " l_l";
+	return result;
+    }
+
+    private String writeOpenTRUCKDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
 	result += writeFrontLeftDoorStatus(openDoors);
 	result += writeTruckRightDoorStatus(openDoors);
@@ -35,7 +48,7 @@ public class VehicleWriter implements Writer {
 	return DoorPresentations.BACK_RIGHT_CLOSED.getDoorRepresentation();
     }
 
-    private String writeOpenCarDoors(String openDoors) {
+    private String writeOpenCARDoors(String openDoors) {
 	String result = "DOORS KO, BLOCKED \n" + "  _\n";
 	result += printFrontDoorsStatus(openDoors);
 	result += printBackDoorsStatus(openDoors);

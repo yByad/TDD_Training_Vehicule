@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import sii.maroc.vehicle.Vehicles;
-
 /************
  * _ door 1 | | door 2 door 3 |_| door 4
  * 
@@ -17,6 +15,18 @@ public class VehiclesTest {
     @Before
     public void initVehicles() {
 	vehicles = new Vehicles("Diesel:5%,Fuel:6%,Hybrid:3%");
+    }
+
+    @Test
+    public void testTwoDoorsCar() {
+	String report = vehicles.move("TwoDoorsCar", "Diesel", "1 2", "200 KM");
+	Assert.assertEquals("DOORS OK, MOVING. The TwoDoorsCar will consume 10.00 L", report);
+    }
+
+    @Test
+    public void testTwoDoorsCarOpenDoor() {
+	String report = vehicles.move("TwoDoorsCar", "Diesel", "1 ", "200 KM");
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + " _\n" + "  l_l\n" + " |_\\\n" + " l_l", report);
     }
 
     @Test
@@ -50,7 +60,7 @@ public class VehiclesTest {
     @Test
     public void testTruckRightDoorOpen() {
 	String report = vehicles.move("TRUCK", "Diesel", "1", "1000 KM");
-	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " |_\\", report);
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " |_\\\n", report);
     }
 
     @Test
@@ -72,7 +82,7 @@ public class VehiclesTest {
     @Test
     public void testCarAllDoorsOpen() {
 	String report = vehicles.move("CAR", "Hybrid", "", "200 KM");
-	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " / \\\n" + " /_\\", report);
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " / \\\n" + " /_\\\n", report);
     }
 
     @Test(expected = IllegalArgumentException.class)

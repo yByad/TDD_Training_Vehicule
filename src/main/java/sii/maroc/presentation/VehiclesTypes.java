@@ -2,7 +2,7 @@ package sii.maroc.presentation;
 
 public enum VehiclesTypes {
 
-    CAR("1 2 3 4 "), TRUCK("1 2 "), MOTORCYCLE("");
+    CAR("1 2 3 4 "), TRUCK("1 2 "), MOTORCYCLE(""), TwoDoorsCar("1 2 ");
 
     private final String doors;
 
