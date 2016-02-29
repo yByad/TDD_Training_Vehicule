@@ -29,13 +29,13 @@ public class ParametersProvider {
 	return distance;
     }
 
-    public Map<String, Integer> extractConsumptions(final String consumptions) {
+    public Map<GasTypes, Integer> extractConsumptions(final String consumptions) {
 	final String[] pourcentagesPerType = consumptions.split(",");
-	Map<String, Integer> consumptionPerType = new HashMap<String, Integer>();
+	Map<GasTypes, Integer> consumptionPerType = new HashMap<GasTypes, Integer>();
 	for (String pourcentage : pourcentagesPerType) {
 	    final String[] consumption = pourcentage.split(":");
 	    consumption[1] = consumption[1].replaceAll("%$", "");
-	    final String type = consumption[0];
+	    final GasTypes type = GasTypes.valueOf(consumption[0]);
 	    final Integer newPercentage = Integer.parseInt(consumption[1]);
 	    consumptionPerType.put(type, newPercentage);
 	}

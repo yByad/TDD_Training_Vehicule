@@ -10,7 +10,8 @@ public class Vehicles {
     final private VehicleFactory factory = VehicleFactory.getInstance();
 
     public Vehicles(String consumptions) {
-	final Map<String, Integer> newConsumptions = ParametersProvider.getInstance().extractConsumptions(consumptions);
+	final ParametersProvider provider = ParametersProvider.getInstance();
+	final Map<GasTypes, Integer> newConsumptions = provider.extractConsumptions(consumptions);
 	GasTypes.defineConsumptions(newConsumptions);
     }
 
@@ -21,5 +22,4 @@ public class Vehicles {
 	}
 	return new FailReport(vehicle, closedDoors).report();
     }
-
 }
