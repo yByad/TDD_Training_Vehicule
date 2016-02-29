@@ -29,17 +29,17 @@ public class ParametersProvider {
 	return distance;
     }
 
-    public Map<GasTypes, Integer> extractConsumptions(final String consumptions) {
-	final String[] pourcentagesPerType = consumptions.split(",");
-	Map<GasTypes, Integer> consumptionPerType = new HashMap<GasTypes, Integer>();
+    public Map<GasTypes, Integer> extractConsumptions(final String newConsumptions) {
+	Map<GasTypes, Integer> newConsumptionPerType = new HashMap<GasTypes, Integer>();
+	final String[] pourcentagesPerType = newConsumptions.split(",");
 	for (String pourcentage : pourcentagesPerType) {
-	    final String[] consumption = pourcentage.split(":");
-	    consumption[1] = consumption[1].replaceAll("%$", "");
-	    final GasTypes type = GasTypes.valueOf(consumption[0]);
-	    final Integer newPercentage = Integer.parseInt(consumption[1]);
-	    consumptionPerType.put(type, newPercentage);
+	    final String[] consumptions = pourcentage.split(":");
+	    consumptions[1] = consumptions[1].replaceAll("%$", "");
+	    final GasTypes type = GasTypes.valueOf(consumptions[0]);
+	    final Integer newPercentage = Integer.parseInt(consumptions[1]);
+	    newConsumptionPerType.put(type, newPercentage);
 	}
-	return consumptionPerType;
+	return newConsumptionPerType;
     }
 
 }

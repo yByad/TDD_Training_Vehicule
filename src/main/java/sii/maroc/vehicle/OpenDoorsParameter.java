@@ -31,7 +31,6 @@ public class OpenDoorsParameter extends Parameter {
 	default:
 	    throw new IllegalArgumentException();
 	}
-
     }
 
 }

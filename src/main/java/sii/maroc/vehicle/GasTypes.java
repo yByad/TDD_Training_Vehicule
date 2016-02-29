@@ -11,7 +11,9 @@ enum GasTypes {
 	this.consumptionPercentage = consumption;
     }
 
-    static void defineConsumptions(Map<GasTypes, Integer> newConsumptions) {
+    static void defineConsumptions(String consumptions) {
+	final ParametersProvider provider = ParametersProvider.getInstance();
+	final Map<GasTypes, Integer> newConsumptions = provider.extractConsumptions(consumptions);
 	for (GasTypes type : newConsumptions.keySet()) {
 	    type.consumptionPercentage = newConsumptions.get(type);
 	}
