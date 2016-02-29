@@ -11,29 +11,15 @@ public class Vehicle {
     }
 
     public Double calculateConsumedGas(Double distance) {
-	final Double gasConsumed = calculateConsumption(distance);
-	return gasConsumed;
-    }
-
-    private Double calculateConsumption(Double distance) {
 	Double consumedGas = distance * gasType.getConsumptionPercentage() / 100;
 	return consumedGas;
     }
 
     boolean canMove(String closedDoors) {
-
 	if (closedDoors.equals(vehiculeType.getDoors())) {
 	    return true;
 	}
 	return verifyDoors(closedDoors);
-    }
-
-    private boolean verifyDoors(String closedDoors) {
-	closedDoors = new ParametersProvider().removeSpaces(closedDoors);
-	if (closedDoors.matches(vehiculeType.getTypeRegEx())) {
-	    return false;
-	}
-	throw new IllegalArgumentException();
     }
 
     public VehiclesTypes getVehiculeType() {
@@ -49,6 +35,14 @@ public class Vehicle {
 		openDoors += possibleDoor;
 	}
 	return openDoors;
+    }
+
+    private boolean verifyDoors(String closedDoors) {
+	closedDoors = new ParametersProvider().removeSpaces(closedDoors);
+	if (closedDoors.matches(vehiculeType.getTypeRegEx())) {
+	    return false;
+	}
+	throw new IllegalArgumentException();
     }
 
 }
