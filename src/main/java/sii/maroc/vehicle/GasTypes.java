@@ -8,21 +8,17 @@ enum GasTypes {
     private int consumptionPercentage;
 
     private GasTypes(int consumption) {
-	this.setConsumptionPurcentage(consumption);
-    }
-
-    int getConsumptionPercentage() {
-	return consumptionPercentage;
-    }
-
-    private void setConsumptionPurcentage(final int consumptionPurcentage) {
-	this.consumptionPercentage = consumptionPurcentage;
+	this.consumptionPercentage = consumption;
     }
 
     static void defineConsumptions(Map<GasTypes, Integer> newConsumptions) {
 	for (GasTypes type : newConsumptions.keySet()) {
-	    type.setConsumptionPurcentage(newConsumptions.get(type));
+	    type.consumptionPercentage = newConsumptions.get(type);
 	}
+    }
+
+    public Double calculateConsumedGas(Double distance) {
+	return distance * this.consumptionPercentage / 100;
     }
 
 }

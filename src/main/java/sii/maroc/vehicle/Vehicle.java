@@ -11,7 +11,7 @@ public class Vehicle {
     }
 
     public Double calculateConsumedGas(Double distance) {
-	Double consumedGas = distance * gasType.getConsumptionPercentage() / 100;
+	Double consumedGas = this.gasType.calculateConsumedGas(distance);
 	return consumedGas;
     }
 
