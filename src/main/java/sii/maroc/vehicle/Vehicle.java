@@ -25,6 +25,10 @@ public class Vehicle {
 	if (closedDoors.equals(vehiculeType.getDoors())) {
 	    return true;
 	}
+	return verifyDoors(closedDoors);
+    }
+
+    private boolean verifyDoors(String closedDoors) {
 	closedDoors = new ParametersProvider().removeSpaces(closedDoors);
 	if (closedDoors.matches(vehiculeType.getTypeRegEx())) {
 	    return false;
@@ -41,15 +45,10 @@ public class Vehicle {
 	final String possibleDoors = vehiculeType.getDoors();
 	for (int i = 0; i < possibleDoors.length(); i++) {
 	    final String possibleDoor = possibleDoors.charAt(i) + "";
-	    openDoors += addOpenDoor(possibleDoor, closedDoors);
+	    if (!closedDoors.contains(possibleDoor))
+		openDoors += possibleDoor;
 	}
 	return openDoors;
-    }
-
-    private String addOpenDoor(final String possibleDoor, final String closedDoors) {
-	if (!closedDoors.contains(possibleDoor))
-	    return possibleDoor;
-	return "";
     }
 
 }
