@@ -11,7 +11,7 @@ public class VehiculeDoorsPrinter implements Printer {
 
     @Override
     public String writeOpenTwoDoorsCarDoors(String openDoors) {
-	String result = "DOORS KO, BLOCKED \n" + "  _\n" + " l_l\n";
+	String result = "  _\n" + " l_l\n";
 	result += writeFrontLeftDoorStatus(openDoors);
 	result += writeTruckRightDoorStatus(openDoors);
 	result += " l_l";
@@ -20,7 +20,7 @@ public class VehiculeDoorsPrinter implements Printer {
 
     @Override
     public String writeOpenTRUCKDoors(String openDoors) {
-	String result = "DOORS KO, BLOCKED \n" + "  _\n";
+	String result = "  _\n";
 	result += writeFrontLeftDoorStatus(openDoors);
 	result += writeTruckRightDoorStatus(openDoors);
 	return result;
@@ -28,7 +28,7 @@ public class VehiculeDoorsPrinter implements Printer {
 
     @Override
     public String writeOpenCARDoors(String openDoors) {
-	String result = "DOORS KO, BLOCKED \n" + "  _\n";
+	String result = "  _\n";
 	result += printFrontDoorsStatus(openDoors);
 	result += printBackDoorsStatus(openDoors);
 	return result;

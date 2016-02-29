@@ -2,20 +2,21 @@ package sii.maroc.vehicle;
 
 enum VehiclesTypes {
 
-    CAR("1 2 3 4 "), TRUCK("1 2 "), MOTORCYCLE(""), TwoDoorsCar("1 2 ");
+    CAR("1 2 3 4", "1?2?3?4?"), TRUCK("1 2", "1?2?"), MOTORCYCLE("", ""), TwoDoorsCar("1 2", "1?2?");
 
     private final String doors;
+    private final String reg;
 
-    private VehiclesTypes(final String doors) {
+    private VehiclesTypes(final String doors, final String reg) {
 	this.doors = doors;
+	this.reg = reg;
     }
 
     String getDoors() {
-	return new ParametersProvider().removeSpaces(doors);
+	return doors;
     }
 
     String getTypeRegEx() {
-	String reg = new ParametersProvider().changeCharacters(doors, " ", "?");
 	return reg;
     }
 }

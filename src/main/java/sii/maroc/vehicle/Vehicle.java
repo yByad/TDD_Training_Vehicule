@@ -1,6 +1,6 @@
 package sii.maroc.vehicle;
 
-class Vehicle {
+public class Vehicle {
 
     private final VehiclesTypes vehiculeType;
     private final GasTypes gasType;
@@ -10,7 +10,7 @@ class Vehicle {
 	this.gasType = gasType;
     }
 
-    Double calculateConsumedGas(Double distance) {
+    public Double calculateConsumedGas(Double distance) {
 	final Double gasConsumed = calculateConsumption(distance);
 	return gasConsumed;
     }
@@ -20,10 +20,36 @@ class Vehicle {
 	return consumedGas;
     }
 
-    boolean doorsAreClosed(final String closedDoors) {
-	if (closedDoors.equals(vehiculeType.getDoors()))
+    boolean canMove(String closedDoors) {
+
+	if (closedDoors.equals(vehiculeType.getDoors())) {
 	    return true;
-	return false;
+	}
+	closedDoors = new ParametersProvider().removeSpaces(closedDoors);
+	if (closedDoors.matches(vehiculeType.getTypeRegEx())) {
+	    return false;
+	}
+	throw new IllegalArgumentException();
+    }
+
+    public VehiclesTypes getVehiculeType() {
+	return vehiculeType;
+    }
+
+    public String retrieveOpenDoors(String closedDoors) {
+	String openDoors = "";
+	final String possibleDoors = vehiculeType.getDoors();
+	for (int i = 0; i < possibleDoors.length(); i++) {
+	    final String possibleDoor = possibleDoors.charAt(i) + "";
+	    openDoors += addOpenDoor(possibleDoor, closedDoors);
+	}
+	return openDoors;
+    }
+
+    private String addOpenDoor(final String possibleDoor, final String closedDoors) {
+	if (!closedDoors.contains(possibleDoor))
+	    return possibleDoor;
+	return "";
     }
 
 }
