@@ -9,7 +9,7 @@ public class VehicleFactory {
     }
 
     Vehicle createVehicule(String vehiculeType, String gasType) {
-	final VehiclesTypes typeOfVehicule = VehiclesTypes.valueOf(vehiculeType);
+	final VehicleTypes typeOfVehicule = VehicleTypes.valueOf(vehiculeType);
 	final GasTypes typeOfGas = GasTypes.valueOf(gasType);
 	return new Vehicle(typeOfVehicule, typeOfGas);
     }

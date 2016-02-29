@@ -2,10 +2,10 @@ package sii.maroc.vehicle;
 
 public class Vehicle {
 
-    private final VehiclesTypes vehiculeType;
+    private final VehicleTypes vehiculeType;
     private final GasTypes gasType;
 
-    Vehicle(VehiclesTypes vehiculeType, GasTypes gasType) {
+    Vehicle(VehicleTypes vehiculeType, GasTypes gasType) {
 	this.vehiculeType = vehiculeType;
 	this.gasType = gasType;
     }
@@ -22,7 +22,7 @@ public class Vehicle {
 	return verifyDoors(closedDoors);
     }
 
-    public VehiclesTypes getVehiculeType() {
+    public VehicleTypes getVehiculeType() {
 	return vehiculeType;
     }
 
