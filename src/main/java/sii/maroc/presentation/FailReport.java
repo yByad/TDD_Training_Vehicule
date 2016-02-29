@@ -10,10 +10,6 @@ public class FailReport implements Report {
 
     private final List<Parameter> parameters;
 
-    public FailReport(List<Parameter> parameters) {
-	this.parameters = parameters;
-    }
-
     public FailReport(Vehicle vehicle, String closedDoors) {
 	final Parameter openDoorsParam = new OpenDoorsParameter(vehicle, closedDoors);
 	this.parameters = new LinkedList<Parameter>();
