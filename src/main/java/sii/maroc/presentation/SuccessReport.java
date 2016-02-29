@@ -2,12 +2,10 @@ package sii.maroc.presentation;
 
 import java.util.List;
 
-public class SuccessReport implements Report {
-
-    private List<Parameter> parameters;
+public class SuccessReport extends Report {
 
     public SuccessReport(List<Parameter> parameters) {
-	this.parameters = parameters;
+	super(parameters);
     }
 
     @Override

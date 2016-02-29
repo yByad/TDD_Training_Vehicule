@@ -1,6 +1,13 @@
 package sii.maroc.presentation;
 
-public interface Report {
+import java.util.List;
 
-    String report();
+public abstract class Report {
+    protected List<Parameter> parameters;
+
+    public Report(final List<Parameter> parameters) {
+	this.parameters = parameters;
+    }
+
+    abstract String report();
 }

@@ -2,12 +2,10 @@ package sii.maroc.presentation;
 
 import java.util.List;
 
-public class FailReport implements Report {
-
-    private List<Parameter> parameters;
+public class FailReport extends Report {
 
     public FailReport(List<Parameter> parameters) {
-	this.parameters = parameters;
+	super(parameters);
     }
 
     @Override
