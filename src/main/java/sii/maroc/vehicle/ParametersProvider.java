@@ -3,6 +3,8 @@ package sii.maroc.vehicle;
 import java.util.HashMap;
 import java.util.Map;
 
+import sii.maroc.vehicle.Fuel.GasTypes;
+
 public class ParametersProvider {
 
     private static final ParametersProvider INSTANCE = new ParametersProvider();
@@ -29,15 +31,15 @@ public class ParametersProvider {
 	return distance;
     }
 
-    public Map<GasTypes, Integer> extractConsumptions(final String newConsumptions) {
-	Map<GasTypes, Integer> newConsumptionPerType = new HashMap<GasTypes, Integer>();
+    public Map<String, Fuel> extractConsumptions(final String newConsumptions) {
+	Map<String, Fuel> newConsumptionPerType = new HashMap<>();
 	final String[] pourcentagesPerType = newConsumptions.split(",");
 	for (String pourcentage : pourcentagesPerType) {
 	    final String[] consumptions = pourcentage.split(":");
 	    consumptions[1] = consumptions[1].replaceAll("%$", "");
 	    final GasTypes type = GasTypes.valueOf(consumptions[0]);
 	    final Integer newPercentage = Integer.parseInt(consumptions[1]);
-	    newConsumptionPerType.put(type, newPercentage);
+	    newConsumptionPerType.put(type.name(), new Fuel(type, newPercentage));
 	}
 	return newConsumptionPerType;
     }

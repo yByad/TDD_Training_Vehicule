@@ -1,8 +1,6 @@
-package sii.maroc.vehicle;
+package sii.maroc.presentation;
 
-import sii.maroc.presentation.Parameter;
-import sii.maroc.presentation.Printer;
-import sii.maroc.presentation.VehiculeDoorsPrinter;
+import sii.maroc.vehicle.Vehicle;
 
 public class OpenDoorsParameter extends Parameter {
 
@@ -19,7 +17,7 @@ public class OpenDoorsParameter extends Parameter {
 
     private String printDoorsOpen(final Vehicle vehicle, final String closedDoors) {
 
-	final Printer printer = VehiculeDoorsPrinter.getInstance();
+	final Printer printer = VehiculePrinter.getInstance();
 	final String openDoors = vehicle.retrieveOpenDoors(closedDoors);
 	switch (vehicle.getVehiculeType()) {
 	case CAR:

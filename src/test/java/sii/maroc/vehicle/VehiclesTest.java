@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import sii.maroc.presentation.Vehicles;
+
 /************
  * _ door 1 | | door 2 door 3 |_| door 4
  * 
@@ -60,7 +62,7 @@ public class VehiclesTest {
     @Test
     public void testTruckRightDoorOpen() {
 	String report = vehicles.move("TRUCK", "Diesel", "1", "1000 KM");
-	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " |_\\\n", report);
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " |_\\", report);
     }
 
     @Test
@@ -82,7 +84,7 @@ public class VehiclesTest {
     @Test
     public void testCarAllDoorsOpen() {
 	String report = vehicles.move("CAR", "Hybrid", "", "200 KM");
-	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " / \\\n" + " /_\\\n", report);
+	Assert.assertEquals("DOORS KO, BLOCKED \n" + "  _\n" + " / \\\n" + " /_\\", report);
     }
 
     @Test(expected = IllegalArgumentException.class)

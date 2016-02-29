@@ -1,6 +1,6 @@
-package sii.maroc.vehicle;
+package sii.maroc.presentation;
 
-import sii.maroc.presentation.Parameter;
+import sii.maroc.vehicle.Vehicle;
 
 public class VehiculeTypeParameter extends Parameter {
 

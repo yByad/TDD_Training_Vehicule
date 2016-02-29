@@ -1,11 +1,13 @@
 package sii.maroc.vehicle;
 
+import sii.maroc.presentation.VehicleTypes;
+
 public class Vehicle {
 
     private final VehicleTypes vehiculeType;
-    private final GasTypes gasType;
+    private final Fuel gasType;
 
-    Vehicle(VehicleTypes vehiculeType, GasTypes gasType) {
+    Vehicle(VehicleTypes vehiculeType, Fuel gasType) {
 	this.vehiculeType = vehiculeType;
 	this.gasType = gasType;
     }
@@ -15,7 +17,7 @@ public class Vehicle {
 	return consumedGas;
     }
 
-    boolean canMove(String closedDoors) {
+    public boolean canMove(String closedDoors) {
 	if (closedDoors.equals(vehiculeType.getDoors())) {
 	    return true;
 	}

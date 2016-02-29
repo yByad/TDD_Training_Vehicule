@@ -1,20 +1,13 @@
 package sii.maroc.presentation;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import sii.maroc.vehicle.OpenDoorsParameter;
-import sii.maroc.vehicle.Vehicle;
 
 public class FailReport implements Report {
 
-    private final List<Parameter> parameters;
+    private List<Parameter> parameters;
 
-    public FailReport(Vehicle vehicle, String closedDoors) {
-	final Parameter openDoorsParam = new OpenDoorsParameter(vehicle, closedDoors);
-	this.parameters = new LinkedList<Parameter>();
-	this.parameters.add(openDoorsParam);
-
+    public FailReport(List<Parameter> parameters) {
+	this.parameters = parameters;
     }
 
     @Override
