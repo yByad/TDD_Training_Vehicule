@@ -1,11 +1,11 @@
 package sii.maroc.presentation;
 
-public interface Printer {
+public abstract class Printer {
 
-    String writeOpenTwoDoorsCarDoors(String openDoors);
+    abstract String writeOpenTwoDoorsCarDoors(String openDoors);
 
-    String writeOpenTRUCKDoors(String openDoors);
+    abstract String writeOpenTRUCKDoors(String openDoors);
 
-    String writeOpenCARDoors(String openDoors);
+    abstract String writeOpenCARDoors(String openDoors);
 
 }

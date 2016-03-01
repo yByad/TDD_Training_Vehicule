@@ -15,14 +15,14 @@ public class ReportFactory {
 	return INSTANCE;
     }
 
-    public String createReport(Vehicle vehicle, String distanceInKM, String closedDoors) {
+    public Report createReport(Vehicle vehicle, String distanceInKM, String closedDoors) {
 	List<Parameter> parameters = new LinkedList<>();
 	if (vehicle.canMove(closedDoors)) {
 	    parameters = createSuccessReportParameters(vehicle, distanceInKM);
-	    return new SuccessReport(parameters).report();
+	    return new SuccessReport(parameters);
 	}
 	parameters = createFailReportParameters(vehicle, closedDoors);
-	return new FailReport(parameters).report();
+	return new FailReport(parameters);
     }
 
     private List<Parameter> createSuccessReportParameters(Vehicle vehicle, String distanceInKM) {

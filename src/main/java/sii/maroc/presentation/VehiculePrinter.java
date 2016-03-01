@@ -1,6 +1,6 @@
 package sii.maroc.presentation;
 
-public class VehiculePrinter implements Printer {
+public class VehiculePrinter extends Printer {
 
     private static final VehiculePrinter INSTANCE = new VehiculePrinter();
 

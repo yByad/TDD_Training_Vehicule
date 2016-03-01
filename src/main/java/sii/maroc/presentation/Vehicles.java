@@ -20,6 +20,7 @@ public class Vehicles {
     public String move(String vehiculeType, String gasType, String closedDoors, String distanceInKM) {
 	final Fuel fuel = fuels.get(gasType);
 	final Vehicle vehicle = factory.createVehicule(vehiculeType, fuel);
-	return ReportFactory.getInstance().createReport(vehicle, distanceInKM, closedDoors);
+	final Report report = ReportFactory.getInstance().createReport(vehicle, distanceInKM, closedDoors);
+	return report.report();
     }
 }
