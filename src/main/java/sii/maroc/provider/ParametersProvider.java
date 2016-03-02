@@ -1,8 +1,9 @@
-package sii.maroc.vehicle;
+package sii.maroc.provider;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import sii.maroc.vehicle.Fuel;
 import sii.maroc.vehicle.Fuel.GasTypes;
 
 public class ParametersProvider {
@@ -10,7 +11,6 @@ public class ParametersProvider {
     private static final ParametersProvider INSTANCE = new ParametersProvider();
 
     public static ParametersProvider getInstance() {
-	// TODO Auto-generated method stub
 	return INSTANCE;
     }
 

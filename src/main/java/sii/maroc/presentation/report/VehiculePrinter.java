@@ -1,11 +1,10 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report;
 
 public class VehiculePrinter extends Printer {
 
     private static final VehiculePrinter INSTANCE = new VehiculePrinter();
 
     public static VehiculePrinter getInstance() {
-	// TODO Auto-generated method stub
 	return INSTANCE;
     }
 

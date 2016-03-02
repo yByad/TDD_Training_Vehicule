@@ -1,13 +1,15 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report.parameters;
 
+import sii.maroc.presentation.report.Printer;
+import sii.maroc.presentation.report.VehiculePrinter;
 import sii.maroc.vehicle.Vehicle;
 
 public class OpenDoorsParameter extends Parameter {
 
     private final String openDoorsPresenation;
 
-    public OpenDoorsParameter(final Vehicle vehicle, final String closedDoors) {
-	this.openDoorsPresenation = printDoorsOpen(vehicle, closedDoors);
+    public OpenDoorsParameter(final Vehicle vehicle) {
+	this.openDoorsPresenation = printDoorsOpen(vehicle);
     }
 
     @Override
@@ -15,10 +17,10 @@ public class OpenDoorsParameter extends Parameter {
 	return openDoorsPresenation;
     }
 
-    private String printDoorsOpen(final Vehicle vehicle, final String closedDoors) {
+    private String printDoorsOpen(final Vehicle vehicle) {
 
 	final Printer printer = VehiculePrinter.getInstance();
-	final String openDoors = vehicle.retrieveOpenDoors(closedDoors);
+	final String openDoors = vehicle.retrieveOpenDoors();
 	switch (vehicle.getVehiculeType()) {
 	case CAR:
 	    return printer.writeOpenCARDoors(openDoors);

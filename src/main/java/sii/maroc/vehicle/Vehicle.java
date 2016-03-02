@@ -1,15 +1,17 @@
 package sii.maroc.vehicle;
 
-import sii.maroc.presentation.VehicleTypes;
+import sii.maroc.vehicle.doors.Doors;
 
 public class Vehicle {
 
     private final VehicleTypes vehiculeType;
     private final Fuel gasType;
+    private Doors doors;
 
-    Vehicle(VehicleTypes vehiculeType, Fuel gasType) {
+    Vehicle(VehicleTypes vehiculeType, Fuel gasType, Doors doors) {
 	this.vehiculeType = vehiculeType;
 	this.gasType = gasType;
+	this.doors = doors;
     }
 
     public Double calculateConsumedGas(Double distance) {
@@ -17,34 +19,16 @@ public class Vehicle {
 	return consumedGas;
     }
 
-    public boolean canMove(String closedDoors) {
-	if (closedDoors.equals(vehiculeType.getDoors())) {
-	    return true;
-	}
-	return verifyDoors(closedDoors);
+    public boolean canMove() {
+	return doors.doorsAreClosed();
     }
 
     public VehicleTypes getVehiculeType() {
 	return vehiculeType;
     }
 
-    public String retrieveOpenDoors(String closedDoors) {
-	String openDoors = "";
-	final String possibleDoors = vehiculeType.getDoors();
-	for (int i = 0; i < possibleDoors.length(); i++) {
-	    final String possibleDoor = possibleDoors.charAt(i) + "";
-	    if (!closedDoors.contains(possibleDoor))
-		openDoors += possibleDoor;
-	}
-	return openDoors;
-    }
-
-    private boolean verifyDoors(String closedDoors) {
-	closedDoors = new ParametersProvider().removeSpaces(closedDoors);
-	if (closedDoors.matches(vehiculeType.getTypeRegEx())) {
-	    return false;
-	}
-	throw new IllegalArgumentException();
+    public String retrieveOpenDoors() {
+	return doors.getOpenDoors();
     }
 
 }

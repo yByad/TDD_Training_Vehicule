@@ -1,6 +1,8 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report;
 
 import java.util.List;
+
+import sii.maroc.presentation.report.parameters.Parameter;
 
 public class FailReport extends Report {
 

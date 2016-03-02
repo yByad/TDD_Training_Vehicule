@@ -1,4 +1,4 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report.parameters;
 
 import sii.maroc.vehicle.Vehicle;
 

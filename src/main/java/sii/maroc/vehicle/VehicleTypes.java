@@ -1,4 +1,4 @@
-package sii.maroc.presentation;
+package sii.maroc.vehicle;
 
 public enum VehicleTypes {
 

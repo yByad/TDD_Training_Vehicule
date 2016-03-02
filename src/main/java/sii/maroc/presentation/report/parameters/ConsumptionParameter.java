@@ -1,6 +1,6 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report.parameters;
 
-import sii.maroc.vehicle.ParametersProvider;
+import sii.maroc.provider.ParametersProvider;
 import sii.maroc.vehicle.Vehicle;
 
 public class ConsumptionParameter extends Parameter {

@@ -1,6 +1,8 @@
-package sii.maroc.presentation;
+package sii.maroc.presentation.report;
 
 import java.util.List;
+
+import sii.maroc.presentation.report.parameters.Parameter;
 
 public abstract class Report {
     protected List<Parameter> parameters;
@@ -9,5 +11,5 @@ public abstract class Report {
 	this.parameters = parameters;
     }
 
-    abstract String report();
+    public abstract String report();
 }
